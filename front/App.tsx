@@ -1,34 +1,31 @@
 
 
-import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import React, { useState } from 'react';
 import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View
+  StyleSheet
 } from 'react-native';
+import AuthStackNavigator from './src/navigation/AuthStackNavigator';
 
 function App(): JSX.Element {
 
+  const [name, setName] = useState('')
+
+  const handleChangeInput = (text : string) => {
+    console.log(text);
+    setName(text);
+  }
+
   return (
-   <SafeAreaView style = {styles.container}>
-    <View style = {styles.inputContainer}>    
-    <TextInput style = {styles.input}></TextInput>
-    <Text>텍스트</Text>
-    </View>
-    <View style = {styles.inputContainer}>    
-    <TextInput style = {styles.input}></TextInput>
-    <Text>텍스트</Text>
-    </View>
-    </SafeAreaView>
+   <NavigationContainer>
+      <AuthStackNavigator/>
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
   container : {
     flex : 1,
-    backgroundColor : 'yellow',
   },
   input : {
     flex : 1,
@@ -39,7 +36,6 @@ const styles = StyleSheet.create({
   },
   inputContainer : {
     flex : 1,
-    backgroundColor : 'red',
     flexDirection : 'row',
     alignItems: 'center',
   }
